@@ -17,13 +17,22 @@ class GameBrain
   end
 
   def display_selection_board
-    puts "0   1    2"
-    puts "3   4    5"
-    puts "6   7    8\n\n"
+    puts '1   2    3'
+    puts '4   5    6'
+    puts "7   8    9\n\n"
   end
 
   def play(index, player_number)
-    board[index] = player_number == 1 ? 'X' : 'O'
+    board[index - 1] = player_number == 1 ? 'X' : 'O'
+  end
+
+  def display_boards
+    display_board
+    display_selection_board
+  end
+
+  def check_valid_input?(input)
+    (1..9).include?(input) && board[input -1 ] == ' '
   end
 
 end

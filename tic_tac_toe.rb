@@ -5,30 +5,37 @@ require './game_brain'
 # game_brain initialization
 game_brain = GameBrain.new
 
-def display_boards(game_brain)
-  game_brain.display_board
-  game_brain.display_selection_board
-end
-
 # Welcome to Tic Tac Toe
 puts "\nWelcome to Tic-Tac-Toe"
 
+# game while loop
+game_on = true
+while game_on
 
-# display boards
-display_boards(game_brain)
+  # display boards
+  game_brain.display_boards
 
-# player 1 turn
-puts 'please choose a number to play: '
-player1_input = gets.chomp.to_i
-game_brain.play(player1_input, 1)
+  # player 1 turn
+  puts 'please choose a number to play: '
+  player1_input = gets.chomp.to_i
+  # validate player1 input
+  until game_brain.check_valid_input?(player1_input)
+    puts 'invalid input, please try again: '
+    player1_input = gets.chomp.to_i
+  end
+  game_brain.play(player1_input, 1)
 
-# display boards
-display_boards(game_brain)
+  # display boards
+  game_brain.display_boards
 
-# player 2 turn
-puts 'please choose a number to play: '
-player2_input = gets.chomp.to_i
-game_brain.play(player2_input, 2)
+  # player 2 turn
+  puts 'please choose a number to play: '
+  player2_input = gets.chomp.to_i
+  # validate player2 input
+  until game_brain.check_valid_input?(player2_input)
+    puts 'invalid input, please try again: '
+    player2_input = gets.chomp.to_i
+  end
+  game_brain.play(player2_input, 2)
 
-# display boards
-display_boards(game_brain)
+end
