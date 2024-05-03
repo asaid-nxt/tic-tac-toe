@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+require_relative 'game'
+
+game = Game.new
+
+def  tic_tac_toe(game)
+  input = game.player_input
+  game.show_output(input)
+  game.player_id = game.player_id == 1 ? 2 : 1
+end
+
+
+until game.game_over
+  tic_tac_toe(game)
+end

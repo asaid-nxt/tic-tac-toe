@@ -2,7 +2,7 @@
 
 # GameBrainClass
 class GameBrain
-  attr_reader :board
+  attr_accessor :board
 
   WINNING_COMBINATIONS = [
     [0, 1, 2], [0, 3, 6], [0, 4, 8], [1, 4, 7],
@@ -27,13 +27,8 @@ class GameBrain
     puts "7   8    9\n\n"
   end
 
-  def play(index, player_number)
-    board[index - 1] = player_number == 1 ? 'X' : 'O'
-  end
-
-  def display_boards
-    display_board
-    display_selection_board
+  def play(index, player_id)
+    board[index - 1] = player_id == 1 ? 'X' : 'O'
   end
 
   def check_valid_input?(input)
