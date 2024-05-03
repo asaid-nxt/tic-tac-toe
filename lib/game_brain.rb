@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# GameBrainClass
+# GameBrain Class: this class handles all operations of the game
 class GameBrain
   attr_accessor :board
 
@@ -50,6 +50,11 @@ class GameBrain
 
   def game_finished?
     board.each.none? { |slot| slot == ' ' }
+  end
+
+  def play_again
+    system('cls')
+    self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   end
 
 end

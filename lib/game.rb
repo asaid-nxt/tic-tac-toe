@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'game_brain'
-require_relative 'player'
-# Game Class
+
+# Game Class: this class handles all interaction with the console
 class Game < GameBrain
   attr_accessor :player_id
   attr_reader :game_over
@@ -35,7 +35,7 @@ class Game < GameBrain
   end
 
   def show_output(input)
-    play(input, player_id)
+    play(input, @player_id)
     display_boards
     check_winner_message
   end
@@ -46,6 +46,17 @@ class Game < GameBrain
       puts 'Player 1 Wins!' if check_winner == 1
       puts 'Player 2 Wins!' if check_winner == 2
       puts "It's a tie!" if game_finished?
+    end
+  end
+
+  def play_again_message
+    puts 'Do you want to play again? (y/n)'
+    answer = gets.chomp.downcase
+    if answer == 'y'
+      self.player_id = 1
+      play_again
+      welcome_message
+      @game_over = false
     end
   end
 
